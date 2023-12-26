@@ -5,6 +5,9 @@ import (
 	"strconv"
 )
 
+// evalRPN evaluates the given reverse polish notation expression and returns the result.
+// It uses a stack to perform the calculations.
+// The time complexity of evalRPN is O(n), where n is the number of tokens in the input.
 func evalRPN(tokens []string) int {
 	stack := make([]int, 0)
 
