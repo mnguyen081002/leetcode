@@ -6,36 +6,38 @@ import (
 )
 
 func minWindow(s string, t string) string {
-	charMap := make([]int, 128)
-	for _, c := range t {
-		charMap[c]++
+	charmap := make([]int, 128)
+
+	for i := 0; i < len(t); i++ {
+		charmap[t[i]]++
 	}
 
-	counter, begin, end, d, head := len(t), 0, 0, math.MaxInt32, 0
+	end, begin, head, d, counter := 0, 0, 0, math.MaxInt, len(t)
 
 	for end < len(s) {
-		if charMap[s[end]] > 0 {
-			counter-- // in t
+		if charmap[s[end]] > 0 {
+			counter--
 		}
-		charMap[s[end]]--
+		charmap[s[end]]--
 		end++
 
-		for counter == 0 { // valid
+		for counter == 0 {
 			if end-begin < d {
 				head = begin
 				d = end - head
 			}
-			charMap[s[begin]]++
-			if charMap[s[begin]] > 0 {
-				counter++ // make it invalid
+			charmap[s[begin]]++
+			if charmap[s[begin]] > 0 {
+				counter++
 			}
 			begin++
 		}
 	}
 
-	if d == math.MaxInt32 {
+	if d == math.MaxInt {
 		return ""
 	}
+
 	return s[head : head+d]
 }
 
