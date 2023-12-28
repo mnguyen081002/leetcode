@@ -2,31 +2,27 @@ package main
 
 import "unicode"
 
+func isNotValid(r byte) bool {
+	return !unicode.IsLetter(rune(r)) && !unicode.IsNumber(rune(r))
+}
+
 func isPalindrome(s string) bool {
 	if s == "" {
 		return true
 	}
 
-	f := func(r rune) rune {
-		if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
-			return -1
-		}
-
-		return unicode.ToLower(r)
-	}
-
 	left, right := 0, len(s)-1
 
 	for left <= right {
-		if f(rune(s[left])) == -1 {
+		if isNotValid(s[left]) {
 			left++
 			continue
 		}
-		if f(rune(s[right])) == -1 {
+		if isNotValid(s[right]) {
 			right--
 			continue
 		}
-		if f(rune(s[left])) != f(rune(s[right])) {
+		if unicode.ToLower(rune(s[left])) != unicode.ToLower(rune(s[right])) {
 			return false
 		}
 		right--
