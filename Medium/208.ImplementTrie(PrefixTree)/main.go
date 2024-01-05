@@ -1,7 +1,7 @@
 package main
 
 type Node struct {
-	Children [26]*Node
+	Children map[rune]*Node
 	End      bool
 }
 
@@ -10,41 +10,45 @@ type Trie struct {
 }
 
 func Constructor() Trie {
-	return Trie{root: &Node{}}
+	return Trie{root: &Node{
+		Children: map[rune]*Node{},
+	}}
 }
 
 func (this *Trie) Insert(word string) {
-	current := this.root
-	for _, ch := range word {
-		idx := ch - 'a'
-		if current.Children[idx] == nil {
-			current.Children[idx] = &Node{}
+	cur := this.root
+
+	for _, v := range word {
+		if _, found := cur.Children[v]; !found {
+			cur.Children[v] = &Node{
+				Children: map[rune]*Node{},
+			}
 		}
-		current = current.Children[idx]
+		cur = cur.Children[v]
 	}
-	current.End = true
+	cur.End = true
 }
 
 func (this *Trie) Search(word string) bool {
-	current := this.root
-	for _, ch := range word {
-		idx := ch - 'a'
-		if current.Children[idx] == nil {
+	cur := this.root
+
+	for _, v := range word {
+		if _, found := cur.Children[v]; !found {
 			return false
 		}
-		current = current.Children[idx]
+		cur = cur.Children[v]
 	}
-	return current.End
+	return cur.End
 }
 
 func (this *Trie) StartsWith(prefix string) bool {
-	current := this.root
-	for _, ch := range prefix {
-		idx := ch - 'a'
-		if current.Children[idx] == nil {
+	cur := this.root
+
+	for _, v := range prefix {
+		if _, found := cur.Children[v]; !found {
 			return false
 		}
-		current = current.Children[idx]
+		cur = cur.Children[v]
 	}
 	return true
 }
