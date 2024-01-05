@@ -5,3 +5,5 @@
 - 238.Product of Array Except Self
 - 525.ContiguousArray
 - 41.FirstMissingPositive
+- 33.SearchinRotatedSortedArray
+- 300.LongestIncreasingSubsequence
