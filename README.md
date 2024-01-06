@@ -8,3 +8,4 @@
 - 33.SearchinRotatedSortedArray
 - 300.LongestIncreasingSubsequence
 - 49.GroupAnagrams
+- 424.LongestRepeatingCharacterReplacement
