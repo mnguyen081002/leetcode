@@ -30,3 +30,8 @@ func characterReplacement(s string, k int) int {
 	}
 	return maxLen
 }
+
+func main() {
+	s := "AABABBA"
+	characterReplacement(s, 1)
+}
