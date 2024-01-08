@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "math"
 
 func minWindow(s string, t string) string {
 	charmap := make([]int, 128)
@@ -39,10 +36,4 @@ func minWindow(s string, t string) string {
 	}
 
 	return s[head : head+d]
-}
-
-func main() {
-	s := "ADOBECODEBANC"
-	t := "ABC"
-	fmt.Println(minWindow(s, t))
 }
