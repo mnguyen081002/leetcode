@@ -37,3 +37,7 @@ func minWindow(s string, t string) string {
 
 	return s[head : head+d]
 }
+
+func main() {
+	minWindow("ADOBECODEBANC", "ABC")
+}
