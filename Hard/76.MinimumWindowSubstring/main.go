@@ -4,13 +4,10 @@ import "math"
 
 func minWindow(s string, t string) string {
 	charmap := make([]int, 128)
-
 	for i := 0; i < len(t); i++ {
 		charmap[t[i]]++
 	}
-
 	end, begin, head, d, counter := 0, 0, 0, math.MaxInt, len(t)
-
 	for end < len(s) {
 		if charmap[s[end]] > 0 {
 			counter--
