@@ -5,5 +5,3 @@
 - 41.FirstMissingPositive
 - 33.SearchinRotatedSortedArray
 - 300.LongestIncreasingSubsequence
-- 424.LongestRepeatingCharacterReplacement
-- 76.Minimum Window Substring
