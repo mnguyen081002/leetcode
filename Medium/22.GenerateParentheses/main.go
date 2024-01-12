@@ -19,3 +19,7 @@ func backtrack(res *[]string, cur string, open, close, max int) {
 		backtrack(res, cur+")", open, close+1, max)
 	}
 }
+
+func main() {
+	generateParenthesis(3)
+}
