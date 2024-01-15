@@ -5,3 +5,4 @@
 - 300.LongestIncreasingSubsequence (DP)
 - 146.LRUCache
 - 22.GenerateParentheses
+- 1347.MinimumNumberofStepstoMakeTwoStringsAnagram
