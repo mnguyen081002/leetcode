@@ -25,3 +25,7 @@ func doSubsetsWithDup(nums []int, cur []int, res *[][]int) {
 		cur = cur[:len(cur)-1]
 	}
 }
+
+func main() {
+	subsetsWithDup([]int{1, 2, 2})
+}
