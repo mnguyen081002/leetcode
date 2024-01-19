@@ -34,7 +34,7 @@ type Obj struct {
 	c   int
 }
 
-func kthSmallest(matrix [][]int, k int) int {
+func kthSmallest1(matrix [][]int, k int) int {
 	m := len(matrix)
 	n := len(matrix[0])
 	h := &MinHeap{}
