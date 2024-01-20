@@ -4,7 +4,7 @@ import (
 	"math/rand"
 )
 
-func findKthLargest(nums []int, k int) int {
+func findKthLargest2(nums []int, k int) int {
 	left, right := 0, len(nums)-1
 	for {
 		pivotIndex := left + rand.Intn(right-left+1)
