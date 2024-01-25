@@ -8,6 +8,5 @@
 - 1347.MinimumNumberofStepstoMakeTwoStringsAnagram
 - 90.SubsetsII
 - 378.KthSmallestElementinaSortedMatrix
-- 215.KthLargestElementinanArray
+- 215.KthLargestElementinanArrays
 - 4.MedianofTwoSortedArrays
-- 148.Sort List
