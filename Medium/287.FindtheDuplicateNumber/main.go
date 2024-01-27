@@ -16,5 +16,5 @@ func findDuplicate(nums []int) int {
 }
 
 func main() {
-	fmt.Println(findDuplicate([]int{8, 7, 1, 10, 17, 15, 18, 11, 16, 9, 19, 12, 5, 14, 3, 4, 2, 13, 18, 18}))
+	fmt.Println(10 % 10)
 }
