@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func setZeroes(matrix [][]int) {
 	for row := 0; row < len(matrix); row++ {
 		for col := 0; col < len(matrix[0]); col++ {
@@ -25,4 +27,10 @@ func setZeroes(matrix [][]int) {
 			}
 		}
 	}
+}
+
+func main() {
+	a := []int{1, 2, 3, 4, 5}
+
+	fmt.Println(a[1:1])
 }
