@@ -22,12 +22,9 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 }
 
 func main() {
-	// 1->2->3->4->5, and n = 2.
-	// 1->2->3->5.
 	head := &ListNode{Val: 1}
 	println(removeNthFromEnd(head, 1))
 
-	// print list
 	for head != nil {
 		println(head.Val)
 		head = head.Next
