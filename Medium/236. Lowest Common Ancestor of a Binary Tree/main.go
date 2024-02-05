@@ -7,24 +7,18 @@ type TreeNode struct {
 }
 
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
-	return dfs(root, p, q)
-}
-
-func dfs(root, p, q *TreeNode) *TreeNode {
 	if root == nil {
 		return root
 	}
-	if root.Val == q.Val || root.Val == p.Val {
+	if root == q || root == p {
 		return root
 	}
-	r, l := dfs(root.Right, p, q), dfs(root.Left, p, q)
-	if r != nil && l == nil {
-		return r
-	} else if r == nil && l != nil {
+	r, l := lowestCommonAncestor(root.Right, p, q), lowestCommonAncestor(root.Left, p, q)
+	if r != nil && l != nil {
+		return root
+	}
+	if l != nil {
 		return l
-	} else if r == nil && l == nil {
-		return nil
-	} else {
-		return root
 	}
+	return r
 }
