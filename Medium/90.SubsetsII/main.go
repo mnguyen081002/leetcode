@@ -3,29 +3,21 @@ package main
 import "sort"
 
 func subsetsWithDup(nums []int) [][]int {
-	res := [][]int{[]int{}}
-	var cur []int
-
+	res := [][]int{{}}
 	sort.Ints(nums)
-	doSubsetsWithDup(nums, cur, &res)
+	backtracking(nums, []int{}, &res)
 	return res
 }
 
-func doSubsetsWithDup(nums []int, cur []int, res *[][]int) {
-	for i := 0; i < len(nums); i++ {
+func backtracking(nums []int, cur []int, res *[][]int) {
+	*res = append(*res, nums)
+	for i := range nums {
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
 		cur = append(cur, nums[i])
-		newRes := make([]int, len(cur))
-		copy(newRes, cur)
-		*res = append(*res, newRes)
-
-		doSubsetsWithDup(nums[i+1:], cur, res)
-		cur = cur[:len(cur)-1]
+		*res = append(*res, append([]int{}, cur...))
+		backtracking(nums[i+1:], cur, res)
+		nums = nums[:len(nums)-1]
 	}
-}
-
-func main() {
-	subsetsWithDup([]int{1, 2, 2})
 }
