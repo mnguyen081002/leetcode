@@ -5,7 +5,6 @@
 - 300.LongestIncreasingSubsequence (DP)
 - 146.LRUCache
 - 22.GenerateParentheses
-- 1347.MinimumNumberofStepstoMakeTwoStringsAnagram
 - 90.SubsetsII
 - 378.KthSmallestElementinaSortedMatrix
 - 215.KthLargestElementinanArrays
