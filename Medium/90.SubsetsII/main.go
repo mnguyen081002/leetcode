@@ -10,7 +10,6 @@ func subsetsWithDup(nums []int) [][]int {
 }
 
 func backtracking(nums []int, cur []int, res *[][]int) {
-	*res = append(*res, nums)
 	for i := range nums {
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
