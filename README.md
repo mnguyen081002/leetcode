@@ -1,6 +1,5 @@
 # Need to review the following:
 
-- 207.CourseSchedule
 - 41.FirstMissingPositive
 - 300.LongestIncreasingSubsequence (DP)
 - 146.LRUCache
@@ -12,3 +11,4 @@
 - 105.ConstructBinaryTreefromPreorderandInorderTraversal
 - 230.KthSmallestElementinaBST
 - 994.Rotting Oranges
+- 207.CourseSchedule
