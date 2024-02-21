@@ -1,52 +1,47 @@
 package main
 
-var directions = [][]int{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
+var directions = [4][2]int{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}
+
+const (
+	Fresh  = 1
+	Rotten = 2
+)
 
 func orangesRotting(grid [][]int) int {
-	time := 0
-	for row := range grid {
-		for col := range grid[row] {
-			if grid[row][col] == 2 {
-				rotting(grid, row, col, 0, &time)
+	m, n := len(grid), len(grid[0])
+	var rotten [][2]int
+	fresh := 0
+	for r := 0; r < m; r++ {
+		for c := 0; c < n; c++ {
+			if grid[r][c] == Fresh {
+				fresh++
+			}
+			if grid[r][c] == Rotten {
+				rotten = append(rotten, [2]int{r, c})
 			}
 		}
 	}
 
-	for row := range grid {
-		for col := range grid[row] {
-			if grid[row][col] == 1 {
-				return -1
+	if fresh == 0 {
+		return 0
+	}
+	minutes := 0
+	for len(rotten) > 0 {
+		for _, v := range rotten {
+			for _, direction := range directions {
+				nr, nc := v[0]+direction[0], v[1]+direction[1]
+				if nr >= 0 && nc >= 0 && nr < m && nc < n && grid[nr][nc] == Fresh {
+					fresh--
+					grid[nr][nc] = Rotten
+					rotten = append(rotten, [2]int{nr, nc})
+				}
 			}
+			rotten = rotten[1:]
+		}
+		minutes++
+		if fresh == 0 {
+			return minutes
 		}
 	}
-
-	return time
-}
-
-func rotting(grid [][]int, row, col, currentTime int, time *int) {
-	if grid[row][col] == -1 || grid[row][col] == 0 {
-		return
-	}
-	if grid[row][col] == 2 && currentTime > *time {
-		currentTime = 0
-		*time = *time / 2
-	}
-	grid[row][col] = -1
-	*time = max(*time, currentTime)
-
-	rows, cols := len(grid), len(grid[0])
-	for _, direction := range directions {
-		next_r, next_c := row+direction[0], col+direction[1]
-		if 0 <= next_r && next_r < rows && 0 <= next_c && next_c < cols {
-			rotting(grid, next_r, next_c, currentTime+1, time)
-		}
-	}
-}
-
-func main() {
-	grid := [][]int{
-		{2, 1, 0, 2},
-	}
-
-	println(orangesRotting(grid))
+	return -1
 }
