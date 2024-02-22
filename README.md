@@ -14,3 +14,4 @@
 - 207.CourseSchedule
 - 886.PossibleBipartition
 - 1129.ShortestPathwithAlternatingColors
+- 1319. Number of Operations to Make Network Connected
