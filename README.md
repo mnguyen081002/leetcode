@@ -12,3 +12,4 @@
 - 230.KthSmallestElementinaBST
 - 994.Rotting Oranges
 - 207.CourseSchedule
+- 886.PossibleBipartition
