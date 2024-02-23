@@ -11,7 +11,6 @@
 - 105.ConstructBinaryTreefromPreorderandInorderTraversal
 - 230.KthSmallestElementinaBST
 - 994.Rotting Oranges
-- 207.CourseSchedule
 - 886.PossibleBipartition
 - 1129.ShortestPathwithAlternatingColors
 - 1319. Number of Operations to Make Network Connected
