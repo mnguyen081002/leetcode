@@ -16,3 +16,4 @@
 - 1319. Number of Operations to Make Network Connected
 - 329. Longest Increasing Path in a Matrix
 - 743.NetworkDelayTime
+- 973. K Closest Points to Origin
