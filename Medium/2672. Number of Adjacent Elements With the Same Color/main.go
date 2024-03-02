@@ -1,41 +1,24 @@
 package main
 
-func colorTheArray(n int, queries [][]int) []int {
-	count := 0
-	arr := make([]int, n)
-	ans := make([]int, len(queries))
-	for i, v := range queries {
-		if v[1] == arr[v[0]] {
-			ans[i] = count
-			continue
+func colorTheArray(n int, queries [][]int) (ans []int) {
+	nums, ans := make([]int, n), make([]int, len(queries))
+	x := 0
+	for i, q := range queries {
+		index, color := q[0], q[1]
+		if index > 0 && nums[index] > 0 && nums[index-1] == nums[index] {
+			x--
 		}
-		if v[0]+1 < n && arr[v[0]+1] != 0 {
-			// nếu màu bên phải giống
-			if arr[v[0]+1] == v[1] {
-				count++
-				// nếu màu hiện tại đang bị đổi giống màu bên phải thì giảm
-			} else if arr[v[0]] == arr[v[0]+1] {
-				count--
-			}
+		if index < n-1 && nums[index] > 0 && nums[index+1] == nums[index] {
+			x--
 		}
-		// nếu màu bên trái giống
-		if v[0]-1 >= 0 && arr[v[0]-1] != 0 {
-			if arr[v[0]-1] == v[1] {
-				count++
-			} else if arr[v[0]] == arr[v[0]-1] {
-				count--
-			}
+		if index > 0 && nums[index-1] == color {
+			x++
 		}
-		ans[i] = count
-		arr[v[0]] = v[1]
+		if index < n-1 && nums[index+1] == color {
+			x++
+		}
+		ans[i] = x
+		nums[index] = color
 	}
-
-	return ans
+	return
 }
-
-// 2 0 0 0 0 0 - 0
-// 2 2 0 0 0 0 - 1
-// 2 2 0 1 0 0 - 1
-// 2 2 1 1 0 0 - 2
-// 2 2 1 1 1 0
-// 2 2 1 1 1 1

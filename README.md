@@ -17,3 +17,4 @@
 - 329. Longest Increasing Path in a Matrix
 - 743.NetworkDelayTime
 - 973. K Closest Points to Origin
+- 825. Friends Of Appropriate Ages
