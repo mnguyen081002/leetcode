@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/list"
-	"runtime/debug"
 )
 
 type LRUCache struct {
@@ -54,8 +53,6 @@ func (this *LRUCache) Put(key int, value int) {
 		delete(this.cache, el.Value.(*entry).key)
 	}
 }
-
-func init() { debug.SetGCPercent(-1) }
 
 /**
  * Your LRUCache object will be instantiated and called as such:
