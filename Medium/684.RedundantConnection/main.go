@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func findRedundantConnection(edges [][]int) []int {
 	roots := make([]int, len(edges)+1)
 
@@ -28,4 +30,8 @@ func find(x int, roots []int) int {
 
 func union(x, y int, roots []int) {
 	roots[find(y, roots)] = find(x, roots)
+}
+
+func main() {
+	fmt.Println(2 | 1 | 4)
 }

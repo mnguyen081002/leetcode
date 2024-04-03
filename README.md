@@ -18,3 +18,4 @@
 - 743.NetworkDelayTime
 - 973. K Closest Points to Origin
 - 825. Friends Of Appropriate Ages
+- 1171. Remove Zero Sum Consecutive Nodes from Linked List

@@ -1,30 +1,43 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-// Count Submatrices with Top-Left Element and Sum Less Than k
-func countSubmatrices(grid [][]int, k int) int {
-	count := 0
-	n, m, maxSize := len(grid), len(grid[0]), min(len(grid), len(grid[0]))
-	for size := 1; size <= maxSize; size++ {
-		for i := 0; i <= n-size; i++ {
-			for j := 0; j <= m-size; j++ {
-				sum := 0
-				for x := 0; x < i+size; x++ {
-					for y := 0; y < j+size; y++ {
-						sum += grid[x][y]
-					}
-				}
-				if sum <= k {
-					count++
-				}
+func minLevelsToGainMorePoints(possible []int) int {
+	n := len(possible)
+	danielPoints := 0
+	bobPoints := 0
+	minLevels := n + 1
+
+	for i := 0; i < n; i++ {
+		if possible[i] == 1 {
+			danielPoints++
+		}
+		for j := i + 1; j < n; j++ {
+			if possible[j] == 1 {
+				bobPoints++
 			}
 		}
+		if danielPoints > bobPoints {
+			minLevels = min(minLevels, i+1)
+		}
 	}
-	return count
+
+	if minLevels == n+1 {
+		return -1
+	}
+	return minLevels
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
 
 func main() {
-
-	fmt.Println(countSubmatrices([][]int{{7, 2, 9}, {1, 5, 0}, {2, 6, 6}}, 20))
+	possible := []int{1, 0, 1, 0}
+	fmt.Println(minLevelsToGainMorePoints(possible)) // Output: 1
 }
