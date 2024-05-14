@@ -2,42 +2,54 @@ package main
 
 import (
 	"fmt"
+	"regexp"
+	"strings"
 )
 
-func minLevelsToGainMorePoints(possible []int) int {
-	n := len(possible)
-	danielPoints := 0
-	bobPoints := 0
-	minLevels := n + 1
+func replaceNumberToComma(input string) string {
+	// Define a regular expression to match "number \n" pattern
+	re := regexp.MustCompile(`\n\d+\n`)
+	// Replace "number \n" with ","
+	replaced := re.ReplaceAllString(input, ", ")
 
-	for i := 0; i < n; i++ {
-		if possible[i] == 1 {
-			danielPoints++
-		}
-		for j := i + 1; j < n; j++ {
-			if possible[j] == 1 {
-				bobPoints++
-			}
-		}
-		if danielPoints > bobPoints {
-			minLevels = min(minLevels, i+1)
-		}
-	}
+	// Trim any leading or trailing whitespace and remove any empty lines
+	replaced = strings.TrimSpace(replaced)
+	replaced = strings.ReplaceAll(replaced, "\n\n", "\n")
 
-	if minLevels == n+1 {
-		return -1
-	}
-	return minLevels
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
+	return replaced
 }
 
 func main() {
-	possible := []int{1, 0, 1, 0}
-	fmt.Println(minLevelsToGainMorePoints(possible)) // Output: 1
+	fmt.Println(replaceNumberToComma(`0 - 6 months
+Amazon
+10
+Microsoft
+4
+BNY Mellon
+3
+Apple
+2
+Bloomberg
+2
+Oracle
+2
+6 months - 1 year
+Goldman Sachs
+3
+PhonePe
+3
+EPAM Systems
+3
+Google
+2
+1 year - 2 years
+Facebook
+3
+Adobe
+3
+Uber
+2
+Walmart Labs
+2`))
+
 }
