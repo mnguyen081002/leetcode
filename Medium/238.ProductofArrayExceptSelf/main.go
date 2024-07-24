@@ -19,6 +19,6 @@ func productExceptSelf(nums []int) []int {
 }
 
 func main() {
-	nums := []int{4, 2, 8, 7}
+	nums := []int{1, 2, 3, 4}
 	productExceptSelf(nums)
 }
